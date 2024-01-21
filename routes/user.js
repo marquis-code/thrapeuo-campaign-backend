@@ -9,7 +9,7 @@ router.post("/signin", async (req, res) => {
     const { fullName, email, phone, location } = req.body;
 
     const auth = new google.auth.GoogleAuth({
-      keyFile: "credentials.json",
+      keyFile: "credentials.env",
       scopes: "https://www.googleapis.com/auth/spreadsheets",
     });
     const client = await auth.getClient();
