@@ -3,10 +3,9 @@ const { google } = require("googleapis");
 let router = express.Router();
 require("dotenv").config();
 const User = require("../model/user");
-
 router.post("/signin", async (req, res) => {
   try {
-    const { fullName, email, phone, location } = req.body;
+    const { fullName, email, phone, location, gender } = req.body;
 
     const auth = new google.auth.GoogleAuth({
       keyFile: "credentials.env",
@@ -25,7 +24,7 @@ router.post("/signin", async (req, res) => {
       range: "Sheet1!A:B",
       valueInputOption: "USER_ENTERED",
       resource: {
-        values: [[fullName, email, phone, location]],
+        values: [[fullName, email, phone, location, gender]],
       },
     });
 
